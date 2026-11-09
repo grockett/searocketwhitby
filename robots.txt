@@ -1,0 +1,6 @@
+User-agent: *
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+Allow: /
+
+Sitemap: https://searocketwhitby.co.uk/sitemap.xml
