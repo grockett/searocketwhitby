@@ -37,3 +37,110 @@
 @media(max-width:800px){.walk-map{height:370px}.poi-index>ol{grid-template-columns:1fr;gap:16px}.map-toolbar{padding:10px;gap:7px}.map-toolbar button{font-size:11px;padding-inline:13px}.map-status{padding:10px 12px}.map-dialog .walk-map{height:auto}}
 .guide-sources{margin-top:45px;padding-top:22px;border-top:1px solid var(--line)}.guide-sources p{font-size:12px;line-height:1.8;margin-bottom:8px}.guide-sources a{display:inline-block;padding-block:8px;text-underline-offset:4px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.walk-fit-intro { max-width: 36rem; }
+.walk-fit h2 { margin-top: 0; }
+.walk-fit-intro p:last-child { margin-bottom: 0; }
+.walk-decision {
+  min-width: 0;
+  margin-top: 22px;
+  padding: clamp(16px, 3vw, 28px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffdf7;
+}
+.walk-decision-progress {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: .875rem;
+  font-weight: 700;
+}
+.walk-decision h3 { font-size: clamp(1.375rem, 2.55vw, 1.875rem); }
+.walk-decision h3:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.walk-decision [data-walk-panel] p { margin: 10px 0 0; line-height: 1.55; }
+.walk-decision [data-walk-panel] + [data-walk-panel]:not([hidden]) { margin-top: 18px; }
+.walk-decision .text-link { font-size: .9375rem; }
+.walk-decision-ready .walk-decision-panels { display: grid; }
+/* Stack panels to keep the card and navigation steady as the visitor moves through the walk. */
+.walk-decision-ready [data-walk-panel] { grid-area: 1 / 1; min-width: 0; }
+.walk-decision-ready [data-walk-panel] + [data-walk-panel]:not([hidden]) { margin-top: 0; }
+.walk-decision-ready [data-walk-panel][hidden] { display: block; visibility: hidden; }
+.walk-decision-choices { display: grid; gap: 8px; margin-top: 14px; }
+.walk-decision button {
+  min-height: 44px;
+  color: var(--ink);
+  font: 700 1rem/1.35 'DM Sans', sans-serif;
+  cursor: pointer;
+}
+.walk-decision button:focus-visible, .walk-faq summary:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+.walk-decision-choices button {
+  padding: 10px 14px;
+  border: 1px solid #9bac9f;
+  border-radius: 6px;
+  background: var(--cream);
+  text-align: left;
+}
+.walk-decision-choices button:hover { background: var(--pale); border-color: var(--ink); }
+.walk-decision-actions:not([hidden]) {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.walk-decision-actions button {
+  padding: 0 6px;
+  border: 0;
+  background: transparent;
+  font-size: .875rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.walk-decision-actions button:disabled { opacity: .55; cursor: default; text-decoration: none; }
+.walk-fit a, .walk-faq a { text-underline-offset: 4px; }
+
+.walk-faq { max-width: 46rem; margin-top: clamp(42px, 7vw, 76px); }
+.walk-faq h2 { margin: 0 0 18px; font-size: clamp(1.875rem, 4vw, 2.75rem); }
+.walk-faq details { border-bottom: 1px solid var(--line); }
+.walk-faq details:first-of-type { border-top: 1px solid var(--line); }
+.walk-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 48px;
+  padding: 10px 4px;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+}
+.walk-faq summary::-webkit-details-marker { display: none; }
+.walk-faq summary::after {
+  content: '';
+  flex: 0 0 8px;
+  height: 8px;
+  margin-inline: 4px;
+  border: solid currentColor;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+.walk-faq details[open] summary::after { transform: rotate(225deg); }
+.walk-faq details p { margin: 0; padding: 0 4px 16px; line-height: 1.65; }
+
+@media (min-width: 900px) {
+  .walk-fit {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(28px, 6vw, 72px);
+    align-items: start;
+  }
+  .walk-decision { margin-top: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .walk-decision-ready [data-walk-panel]:not([hidden]) { animation: walk-panel-in 160ms ease-out; }
+  .walk-decision-choices button { transition: background-color 160ms ease-out, border-color 160ms ease-out; }
+  @keyframes walk-panel-in { from { opacity: .65; } to { opacity: 1; } }
+}
