@@ -83,7 +83,9 @@
       explore.hidden = true;
       fit.hidden = false;
       fullscreen.hidden = typeof dialog.showModal !== 'function';
-      status.textContent = 'Drag to explore; pinch or use + and − to zoom. Numbered markers match the places below.';
+      status.textContent = data.pois.length
+        ? 'Drag to explore; pinch or use + and − to zoom. Numbered markers match the places below.'
+        : 'Drag to explore; pinch or use + and − to zoom.';
     } catch {
       if (map) map.remove();
       map = null;
