@@ -2,7 +2,7 @@
 (() => {
   const section = document.getElementById('stages');
   const stages = [...section.querySelectorAll('details.stage')];
-  const storageKey = 'cleveland-way:open-stages:v1';
+  const storageKey = `${section.dataset.stageStorageKey || 'cleveland-way'}:open-stages:v1`;
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey));
     if (Array.isArray(saved)) stages.forEach(stage => { stage.open = saved.includes(stage.id); });
